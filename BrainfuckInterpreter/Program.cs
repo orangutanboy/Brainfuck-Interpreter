@@ -13,7 +13,8 @@ namespace BrainfuckInterpreter
             Console.InputEncoding = new ASCIIEncoding();
             Runner runner = new Runner();
             //runner.LoadAndRun(ExamplePrograms.HelloWorld);
-            runner.LoadAndRun(ExamplePrograms.LowerToUpper);
+            //runner.LoadAndRun(ExamplePrograms.LowerToUpper);
+            runner.LoadAndRun(ExamplePrograms.Fibonacci);
             Console.ReadLine();
         }
 

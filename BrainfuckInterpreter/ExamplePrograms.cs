@@ -15,5 +15,6 @@ namespace BrainfuckInterpreter
         /// Takes a user input and subtracts 32 from it. If the value is the enter key then the program exits
         /// </summary>
         public const string LowerToUpper = ",-------------[-------------------.,-------------]";
+        public const string Fibonacci = "+++++++++++++++++++++++++++++++++++++++++++++++++.>+++++++++++++++++++++++++++++++++++++++++++++++++.>>>+++++ +++++[<<<[->>+<<]>>[-<+<+>>]<<<[->+<]>>[-<<+>>]<.>>>-]";
     }
 }
