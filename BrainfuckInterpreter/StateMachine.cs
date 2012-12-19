@@ -12,10 +12,11 @@ namespace BrainfuckInterpreter
         public int MemoryAddress{get;set;}
         public Stack<int> PreviousLoopStarts = new Stack<int>();
         private Dictionary<OpCode, Action> actions = new Dictionary<OpCode, Action>();
-        private Runner runner;
+        private Runner _runner;
 
         public StateMachine(Runner runner)
         {
+            _runner = runner;
             actions.Add(OpCode.BeginLoop, BeginLoop);
             actions.Add(OpCode.DecrementPointer, DecrementPointer);
             actions.Add(OpCode.DecrementValue, DecrementValue);
@@ -110,7 +111,7 @@ namespace BrainfuckInterpreter
             }
             else
             {
-                int endLoopValue = runner.SeekEndLoop();
+                int endLoopValue = _runner.SeekEndLoop();
                 if (endLoopValue == -1)
                 {
                     Program.ErrorOut("Parse error");
