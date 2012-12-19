@@ -9,6 +9,15 @@ namespace BrainfuckInterpreter
     {
         static void Main(string[] args)
         {
+            Runner runner = new Runner("++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.");
+            runner.Run();
+            Console.ReadLine();
+        }
+
+        internal static void ErrorOut(string p)
+        {
+            Console.WriteLine(p);
+            Environment.Exit(-1);
         }
     }
 }

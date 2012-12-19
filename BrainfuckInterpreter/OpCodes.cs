@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BrainfuckInterpreter
 {
-    enum OpCode : byte
+    public enum OpCode : byte
     {
         IncrementPointer = (byte)'>',
         DecrementPointer = (byte)'<',
