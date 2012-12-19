@@ -111,7 +111,7 @@ namespace BrainfuckInterpreter
             }
             else
             {
-                int endLoopValue = _runner.SeekEndLoop();
+                int endLoopValue = _runner.SeekEndLoop(InstructionAddress);
                 if (endLoopValue == -1)
                 {
                     Program.ErrorOut("Parse error");

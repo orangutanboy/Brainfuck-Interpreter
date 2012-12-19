@@ -106,9 +106,28 @@ namespace BrainfuckInterpreter
             return -1;
         }
 
-        public int SeekEndLoop()
+        public int SeekEndLoop(int startPointer)
         {
-            return SeekChar(']');
+            Stack<bool> nestedLoops = new Stack<bool>();
+            for (int i = startPointer+1; i < Program.Length; i++)
+            {
+                if (Program[i] == '[')
+                {
+                    nestedLoops.Push(true);
+                }
+                else if (Program[i] == ']')
+                {
+                    if (nestedLoops.Count == 0)
+                    {
+                        return i;
+                    }
+                    else
+                    {
+                        nestedLoops.Pop();
+                    }
+                }
+            }
+            return -1;
         }
 
         public int SeekBeginLoop()
