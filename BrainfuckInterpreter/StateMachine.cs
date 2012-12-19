@@ -16,8 +16,6 @@ namespace BrainfuckInterpreter
 
         public StateMachine(Runner runner)
         {
-            Memory = new byte[64 * 1024]; //64k of RAM
-            MemoryAddress = 0;
             actions.Add(OpCode.BeginLoop, BeginLoop);
             actions.Add(OpCode.DecrementPointer, DecrementPointer);
             actions.Add(OpCode.DecrementValue, DecrementValue);
@@ -28,6 +26,14 @@ namespace BrainfuckInterpreter
             actions.Add(OpCode.OutputValue, OutputValue);
         }
 
+        public void ResetStateMachine()
+        {
+            MemoryAddress = 0;
+            Memory = new byte[64 * 1024];
+            PreviousLoopStarts.Clear();
+            InstructionAddress = 0;
+        }
+
         public void OutputValue()
         {
             Console.Write((char)Memory[MemoryAddress]);
@@ -36,7 +42,8 @@ namespace BrainfuckInterpreter
 
         public void InputValue()
         {
-            Memory[MemoryAddress] = (byte)Console.Read();
+            var key = Console.ReadKey(true).KeyChar;
+            Memory[MemoryAddress] = (byte)key;
             IncrementInstructionAddress();
         }
 
