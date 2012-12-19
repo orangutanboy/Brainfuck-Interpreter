@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -18,8 +19,13 @@ namespace BrainfuckInterpreter
 
         internal static void ErrorOut(string p)
         {
+            if (Debugger.IsAttached)
+            {
+                Debugger.Break();
+            }
             Console.WriteLine(p);
             Environment.Exit(-1);
+            Console.ReadLine();
         }
     }
 }
