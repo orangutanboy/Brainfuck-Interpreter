@@ -35,13 +35,32 @@ namespace BrainfuckInterpreter
             validChars.Add('-');
             validChars.Add('[');
             validChars.Add(']');
-
+            Stack<char> brackets = new Stack<char>();
             foreach (char c in program)
             {
                 if (validChars.Contains(c))
                 {
                     sb.Append(c);
+                    if (c == '[')
+                    {
+                        brackets.Push(c);
+                    }
+                    if (c == ']')
+                    {
+                        if (brackets.Count > 0)
+                        {
+                            brackets.Pop();
+                        }
+                        else
+                        {
+                            BrainfuckInterpreter.Program.ErrorOut("Invalid bracket syntax. You have too many [ or too few ].");
+                        }
+                    }
                 }
+            }
+            if (brackets.Count != 0)
+            {
+                BrainfuckInterpreter.Program.ErrorOut("Invalid bracket syntax. You have too many [ or too few ]");
             }
             return sb.ToString();
         }
