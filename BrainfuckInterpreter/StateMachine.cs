@@ -103,14 +103,14 @@ namespace BrainfuckInterpreter
             }
             else
             {
-                int endLoopAddress = runner.SeekEndLoop();
-                if (endLoopAddress != -1)
+                int endLoopValue = runner.SeekEndLoop();
+                if (endLoopValue == -1)
                 {
-                    InstructionAddress = endLoopAddress;
+                    Program.ErrorOut("Parse error");
                 }
                 else
                 {
-                    Program.ErrorOut("Parse error");
+                    InstructionAddress = endLoopValue + 1;
                 }
             }
         }
@@ -125,15 +125,7 @@ namespace BrainfuckInterpreter
                 }
                 else
                 {
-                    int beginLoopAddress = runner.SeekBeginLoop();
-                    if (beginLoopAddress != -1)
-                    {
-                        InstructionAddress = beginLoopAddress++;
-                    }
-                    else
-                    {
-                        Program.ErrorOut("Parse error");
-                    }
+                    Program.ErrorOut("Parse error");
                 }
             }
             else
