@@ -14,9 +14,11 @@ namespace BrainfuckInterpreter
 
         public Runner()
         {
+            sm = new StateMachine(this);
         }
 
         public Runner(string program)
+            : this()
         {
             LoadNewProgram(program);
         }
@@ -61,7 +63,7 @@ namespace BrainfuckInterpreter
         {
             if (programLoaded)
             {
-                sm = new StateMachine(this);
+                sm.ResetStateMachine();
                 while (sm.InstructionAddress != Program.Length)
                 {
                     sm.ExecuteOpcode((OpCode)Program[sm.InstructionAddress]);

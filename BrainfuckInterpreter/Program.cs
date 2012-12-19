@@ -9,8 +9,10 @@ namespace BrainfuckInterpreter
     {
         static void Main(string[] args)
         {
-            Runner runner = new Runner("++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.");
-            runner.Run();
+            Console.InputEncoding = new ASCIIEncoding();
+            Runner runner = new Runner();
+            //runner.LoadAndRun(ExamplePrograms.HelloWorld);
+            runner.LoadAndRun(ExamplePrograms.LowerToUpper);
             Console.ReadLine();
         }
 
