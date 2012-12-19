@@ -14,7 +14,8 @@ namespace BrainfuckInterpreter
             Runner runner = new Runner();
             //runner.LoadAndRun(ExamplePrograms.HelloWorld);
             //runner.LoadAndRun(ExamplePrograms.LowerToUpper);
-            runner.LoadAndRun(ExamplePrograms.Fibonacci);
+            //runner.LoadAndRun(ExamplePrograms.Fibonacci);
+            runner.LoadAndRun(ExamplePrograms.Rot13);
             Console.ReadLine();
         }
 

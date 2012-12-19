@@ -19,5 +19,6 @@ namespace BrainfuckInterpreter
         /// Calculates the first n fibonacci numbers after 1,1 where n is stored in Memory[4]
         /// </summary>
         public const string Fibonacci = "+.>+.>>>+++++ +++++[<<<[->>+<<]>>[-<+<+>>]<<<[->+<]>>[-<<+>>]<.>>>-]";
+        public const string Rot13 = "-,+[-[>>++++[>++++++++<-]<+<-[>+>+>-[>>>]<[[>+<-]>>+>]<<<<<-]]>>>[-]+>--[-[<->[-]]]<[++++++++++++<[>-[>+>>]>[+[<+>-]>+>>]<<<<<-]>>[<+>-]>[-[-<<[-]>>]<<[<<->>-]>>]<<[<<+>>-]]<[-]<.[-]<-,+]";
     }
 }
