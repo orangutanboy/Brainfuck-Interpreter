@@ -10,10 +10,15 @@ namespace BrainfuckInterpreter
         public string Program { get; set; }
         private int CurrentStackAddress = 0;
         StateMachine sm;
+        private bool programLoaded = false;
+
+        public Runner()
+        {
+        }
 
         public Runner(string program)
         {
-            Program = ParseProgram(program);
+            LoadNewProgram(program);
         }
 
         private string ParseProgram(string program)
@@ -39,12 +44,32 @@ namespace BrainfuckInterpreter
             return sb.ToString();
         }
 
+        public void LoadAndRun(string program)
+        {
+            LoadNewProgram(program);
+            Run();
+        }
+
+        public void LoadNewProgram(string program)
+        {
+            programLoaded = false;
+            Program = ParseProgram(program);
+            programLoaded = true;
+        }
+
         public void Run()
         {
-            sm = new StateMachine(this);
-            while (sm.InstructionAddress != Program.Length)
+            if (programLoaded)
             {
-                sm.ExecuteOpcode((OpCode)Program[sm.InstructionAddress]);
+                sm = new StateMachine(this);
+                while (sm.InstructionAddress != Program.Length)
+                {
+                    sm.ExecuteOpcode((OpCode)Program[sm.InstructionAddress]);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No program has yet been loaded");
             }
         }
 
