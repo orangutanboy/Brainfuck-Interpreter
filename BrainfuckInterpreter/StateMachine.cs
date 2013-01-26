@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BrainfuckInterpreter
 {
-    [DebuggerVisualizer(typeof(StateMachineVisualiser), typeof(StateMachineObjectSource))]
+    [DebuggerVisualizer(typeof(StateMachineVisualiser), typeof(StateMachineObjectSource), Description = "Memory Visualiser")]
     public class StateMachine
     {
         public int InstructionAddress { get; set; }

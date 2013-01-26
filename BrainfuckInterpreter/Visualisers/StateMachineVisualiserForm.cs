@@ -47,21 +47,24 @@ namespace BrainfuckInterpreter.Visualisers
             public StateMachineViewModel(int memoryLocation, string memory)
             {
                 CurrentPosition = memoryLocation;
+                
                 var lastNon0Slot = GetLastNonZeroMemoryIndex(memory);
-                var slots = memory.Substring(0, lastNon0Slot + 1);
+                var displayEnd = Math.Max(lastNon0Slot, memoryLocation);
 
-                for (var memSlot = 0; memSlot < slots.Length; ++memSlot)
+                var slotsToDisplay = memory.Substring(0, displayEnd + 1);
+
+                for (var memSlot = 0; memSlot < slotsToDisplay.Length; ++memSlot)
                 {
                     SlotLabels += memSlot.ToString().PadRight(4);
-                    SlotValues += ((int)slots[memSlot]).ToString().PadRight(4);
-                    SlotAsciiValues += (char.IsControl(slots[memSlot]) ? ' ' : slots[memSlot]).ToString().PadRight(4);
+                    SlotValues += ((int)slotsToDisplay[memSlot]).ToString().PadRight(4);
+                    SlotAsciiValues += (char.IsControl(slotsToDisplay[memSlot]) ? ' ' : slotsToDisplay[memSlot]).ToString().PadRight(4);
                 }
             }
 
             private int GetLastNonZeroMemoryIndex(string memory)
             {
                 return Array.FindLastIndex(memory.ToArray(), b => b > 0);
-            }
+            }            
 
             public string SlotLabels { get; private set; }
             public string SlotValues { get; private set; }
