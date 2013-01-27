@@ -23,22 +23,9 @@ namespace BrainfuckInterpreter
             _programInstructions = ReadProgram();
             runner.LoadAndRun(_programInstructions);
 
-            PromptForSaveToClipboard();
-        }
-
-        private static void PromptForSaveToClipboard()
-        {
             Console.WriteLine();
-            Console.WriteLine("Press Y to copy program to clipboard, any other key to quit");
-            var key = Console.ReadKey();
-
-            if (key.Key == ConsoleKey.Y)
-            {
-                if (!string.IsNullOrEmpty(_programInstructions))
-                {
-                    Clipboard.SetText(_programInstructions);
-                }
-            }
+            Console.WriteLine("Press any key to quit");
+            Console.ReadKey();
         }
 
         //Read a program from the command line, allow user to paste from clipboard
@@ -78,7 +65,6 @@ namespace BrainfuckInterpreter
             }
             Console.WriteLine(p);
 
-            PromptForSaveToClipboard();
             Environment.Exit(-1);
             Console.ReadLine();
         }
